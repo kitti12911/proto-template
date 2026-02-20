@@ -1,0 +1,78 @@
+syntax = "proto3";
+
+package example.v1;
+
+import "google/protobuf/field_mask.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "grpc-template/gen/example/v1;examplev1";
+
+service ExampleService {
+  rpc GetExample(GetExampleRequest) returns (GetExampleResponse) {}
+  rpc ListExamples(ListExamplesRequest) returns (ListExamplesResponse) {}
+  rpc CreateExample(CreateExampleRequest) returns (CreateExampleResponse) {}
+  rpc UpdateExample(UpdateExampleRequest) returns (UpdateExampleResponse) {}
+  rpc UpdateExamplePartial(UpdateExamplePartialRequest) returns (UpdateExamplePartialResponse) {}
+  rpc DeleteExample(DeleteExampleRequest) returns (DeleteExampleResponse) {}
+}
+
+message Example {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+  string status = 4;
+  google.protobuf.Timestamp created_at = 5;
+  google.protobuf.Timestamp updated_at = 6;
+}
+
+message GetExampleRequest {
+  string id = 1;
+}
+
+message GetExampleResponse {
+  Example example = 1;
+}
+
+message ListExamplesRequest {
+  int32 page_size = 1;
+  string page_token = 2;
+  string filter = 3;
+  string order_by = 4;
+}
+
+message ListExamplesResponse {
+  repeated Example examples = 1;
+  string next_page_token = 2;
+  int32 total_size = 3;
+}
+
+message CreateExampleRequest {
+  Example example = 1;
+}
+
+message CreateExampleResponse {
+  Example example = 1;
+}
+
+message UpdateExampleRequest {
+  Example example = 1;
+}
+
+message UpdateExampleResponse {
+  Example example = 1;
+}
+
+message UpdateExamplePartialRequest {
+  Example example = 1;
+  google.protobuf.FieldMask update_mask = 2;
+}
+
+message UpdateExamplePartialResponse {
+  Example example = 1;
+}
+
+message DeleteExampleRequest {
+  string id = 1;
+}
+
+message DeleteExampleResponse {}
