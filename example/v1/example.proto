@@ -46,32 +46,41 @@ message ListExamplesResponse {
 }
 
 message CreateExampleRequest {
-  Example example = 1;
+  string name = 1;
+  string description = 2;
 }
 
 message CreateExampleResponse {
-  Example example = 1;
+  string id = 1;
 }
 
 message UpdateExampleRequest {
-  Example example = 1;
+  string id = 1;
+  string name = 2;
+  string description = 3;
+  string status = 4;
 }
 
 message UpdateExampleResponse {
-  Example example = 1;
+  int64 affected_rows = 1;
 }
 
 message UpdateExamplePartialRequest {
-  Example example = 1;
-  google.protobuf.FieldMask update_mask = 2;
+  string id = 1;
+  string name = 2;
+  string description = 3;
+  string status = 4;
+  google.protobuf.FieldMask update_mask = 5;
 }
 
 message UpdateExamplePartialResponse {
-  Example example = 1;
+  int64 affected_rows = 1;
 }
 
 message DeleteExampleRequest {
   string id = 1;
 }
 
-message DeleteExampleResponse {}
+message DeleteExampleResponse {
+  int64 affected_rows = 1;
+}
