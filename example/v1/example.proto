@@ -46,8 +46,7 @@ message ListExamplesResponse {
 }
 
 message CreateExampleRequest {
-  string name = 1;
-  string description = 2;
+  Example example = 1;
 }
 
 message CreateExampleResponse {
@@ -56,9 +55,7 @@ message CreateExampleResponse {
 
 message UpdateExampleRequest {
   string id = 1;
-  string name = 2;
-  string description = 3;
-  string status = 4;
+  Example example = 2;
 }
 
 message UpdateExampleResponse {
@@ -67,10 +64,8 @@ message UpdateExampleResponse {
 
 message UpdateExamplePartialRequest {
   string id = 1;
-  string name = 2;
-  string description = 3;
-  string status = 4;
-  google.protobuf.FieldMask update_mask = 5;
+  Example example = 2;
+  google.protobuf.FieldMask update_mask = 3;
 }
 
 message UpdateExamplePartialResponse {
